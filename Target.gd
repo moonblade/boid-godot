@@ -21,12 +21,10 @@ func on_hit():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if randi() % 1000 < 5:
+		reset()
 	pass
 
 func _draw():
-	draw_circle(Vector2.ZERO, 10, "#ff0000")
-
-func _on_area_2d_body_entered(body):
-	print("HERE")
-	hit.emit()
-	reset()
+#	draw_circle(Vector2.ZERO, 10, "#ff0000")
+	pass
