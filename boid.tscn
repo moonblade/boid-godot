@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgmpodkg24826"]
+[gd_scene load_steps=4 format=3 uid="uid://bgmpodkg24826"]
 
 [ext_resource type="Texture2D" uid="uid://m7m2giwb4oa4" path="res://boid.svg" id="1_ud0nh"]
 
@@ -13,6 +13,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmt7"]
+size = Vector2(24, 45)
+
 [node name="Boid" type="Node2D"]
 position = Vector2(500, 500)
 metadata/_edit_group_ = true
@@ -24,3 +27,7 @@ gravity_scale = 2.66454e-15
 position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_021bj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_wdmt7")
