@@ -1,5 +1,10 @@
 extends Node2D
 var target
+signal hit
+
+func reset():
+	target = getRandomPoint()
+	self.position = target
 
 func getRandomPoint():
 	var screenSize = get_viewport().get_visible_rect().size
@@ -7,11 +12,16 @@ func getRandomPoint():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	target = getRandomPoint()
+	reset()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _draw():
-	draw_circle(target, 10, "#ff0000")
+	draw_circle(Vector2.ZERO, 10, "#ff0000")
+
+func _on_area_2d_body_entered(body):
+	print("HERE")
+	hit.emit()
+	reset()

@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 @export var speed = 300
 @export var angular_speed = PI
 	
@@ -25,4 +25,3 @@ func _process(delta):
 	var target = $"../Target".position
 	var direction = getRotationDirection(position, position + Vector2.UP.rotated(self.rotation) * 200, target)
 	self.rotation += angular_speed * delta * direction
-	

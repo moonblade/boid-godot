@@ -6,6 +6,6 @@
 [node name="Main" type="Node2D"]
 metadata/_edit_group_ = true
 
-[node name="Boid" parent="." instance=ExtResource("1_k653i")]
-
 [node name="Target" parent="." instance=ExtResource("2_g8spu")]
+
+[node name="Body" parent="." instance=ExtResource("1_k653i")]

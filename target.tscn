@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://c726nhusu73sv"]
+[gd_scene load_steps=3 format=3 uid="uid://c726nhusu73sv"]
 
 [ext_resource type="Script" path="res://Target.gd" id="1_a82le"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnuhu"]
+radius = 3.0
 
 [node name="Target" type="Node2D"]
 script = ExtResource("1_a82le")
 metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vnuhu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
