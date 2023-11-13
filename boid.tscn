@@ -14,12 +14,13 @@ animations = [{
 }]
 
 [node name="Boid" type="Node2D"]
+position = Vector2(500, 500)
 metadata/_edit_group_ = true
 
 [node name="Body" type="RigidBody2D" parent="."]
 gravity_scale = 2.66454e-15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
-position = Vector2(512, 512)
+position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_021bj")
