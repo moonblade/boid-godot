@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsw35l2vyprsy"]
+
+[ext_resource type="PackedScene" uid="uid://bgmpodkg24826" path="res://boid.tscn" id="1_k653i"]
+[ext_resource type="PackedScene" uid="uid://c726nhusu73sv" path="res://target.tscn" id="2_g8spu"]
+
+[node name="Main" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Boid" parent="." instance=ExtResource("1_k653i")]
+
+[node name="Target" parent="." instance=ExtResource("2_g8spu")]
