@@ -17,8 +17,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmt7"]
 size = Vector2(24, 45)
 
-[node name="Body" type="RigidBody2D"]
+[node name="Boid" type="RigidBody2D"]
 gravity_scale = 2.66454e-15
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("2_leblf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

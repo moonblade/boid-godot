@@ -1,4 +1,5 @@
-extends Node2D
+extends Area2D
+
 var target
 signal hit
 
@@ -13,6 +14,10 @@ func getRandomPoint():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reset()
+	connect("body_entered", self.on_hit)
+	
+func on_hit():
+	print("hit")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
