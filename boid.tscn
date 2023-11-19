@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgmpodkg24826"]
+[gd_scene load_steps=9 format=3 uid="uid://bgmpodkg24826"]
 
 [ext_resource type="Texture2D" uid="uid://m7m2giwb4oa4" path="res://boid.svg" id="1_ud0nh"]
 [ext_resource type="Script" path="res://Body.gd" id="2_leblf"]
+[ext_resource type="Script" path="res://CollisionShape2D.gd" id="3_vlsat"]
+[ext_resource type="Script" path="res://align.gd" id="4_fp0cw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_021bj"]
 animations = [{
@@ -17,11 +19,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmt7"]
 size = Vector2(24, 45)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1ymu"]
+radius = 69.1809
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77gy0"]
+radius = 219.228
+
 [node name="Boid" type="RigidBody2D"]
+collision_mask = 0
 gravity_scale = 2.66454e-15
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("2_leblf")
+maxspeed = 2000
+minspeed = 700
+avoidFactor = 0.09
+matchFactor = 0.05
+centeringFactor = 0.005
+turnFactor = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -31,3 +46,21 @@ sprite_frames = SubResource("SpriteFrames_021bj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_wdmt7")
+
+[node name="AvoidRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidRange"]
+modulate = Color(0.278431, 1, 1, 1)
+shape = SubResource("CircleShape2D_v1ymu")
+script = ExtResource("3_vlsat")
+
+[node name="AlignRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlignRange"]
+shape = SubResource("CircleShape2D_77gy0")
+script = ExtResource("4_fp0cw")
+
+[connection signal="body_entered" from="AvoidRange" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="AvoidRange" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="AlignRange" to="." method="alignEnter"]
+[connection signal="body_exited" from="AlignRange" to="." method="alignExit"]
